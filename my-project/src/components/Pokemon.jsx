@@ -5,10 +5,13 @@ const Pokemon = (props) => {
   const { favoritePokemons, updateFavoritePokemons } =
     useContext(FavoriteContext);
   const { pokemon } = props;
+  
   const onHeartClick = () => {
     updateFavoritePokemons(pokemon.name);
   };
+
   const heart = favoritePokemons.includes(pokemon.name) ? '❤️' : '🖤';
+
   return (
     <div className="pokemon-card flex shadow-lg shadow-black rounded">
       <div className="pokemon-image-container px-0 py-1.5">
