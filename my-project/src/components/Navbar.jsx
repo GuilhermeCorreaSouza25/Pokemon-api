@@ -1,37 +1,23 @@
-import React, { useState } from 'react';
-import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import FavoriteContext from '../contexts/favoritesContext';
+
 const Navbar = () => {
-  const [nav, setNav] = useState(false);
-
-  const handleNav = () => {
-    setNav(!nav);
-  };
-
+  const { favoritePokemons } = useContext(FavoriteContext);
+  const logoImg =
+    'https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png';
   return (
-    <div className="flex justify-between items-center h-24 max-w-[1240px] mx-auto px-4 text-white">
-      <h1 className="w-full text-w-9xl font-bold text-[#191970]">POKEDEX</h1>
-      <ul className="hidden md:flex">
-        <li className="p-4">Inicio</li>
-        <Link className="p-4" to="/Favorites">
-          Favoritos
-        </Link>
-      </ul>
-      <div onClick={handleNav} className="block md:hidden">
-        {nav ? <AiOutlineClose size={20} /> : <AiOutlineMenu size={20} />}
+    <nav className="flex justify-evenly items-center">
+      <div className="flex items-center">
+        <img
+          alt="pokeapi-logo"
+          src={logoImg}
+          className="flex justify-end items-center"
+        />
       </div>
-      <ul
-        className={
-          nav
-            ? 'fixed left-0 top-0 w-[60%] h-full border-r border-r-gray-900 bg-[#00FF7F] ease-in-out duration-500'
-            : 'ease-in-out duration-500 fixed left-[-100%]'
-        }
-      >
-        <h1 className="w-full text-3xl font-bold">POKEDEX</h1>
-        <li className="p-4 border-b border-gray-600">Inicio</li>
-        <Link className="p-4 border-b border-gray-600">Favoritos</Link>
-      </ul>
-    </div>
+      <div className="flex flex-row justify-end items-center">
+        {favoritePokemons.length} ❤️
+      </div>
+    </nav>
   );
 };
 
