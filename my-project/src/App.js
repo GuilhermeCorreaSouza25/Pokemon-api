@@ -4,7 +4,9 @@ import './App.css';
 import Navbar from './components/Navbar';
 import Pokedex from './components/Pokedex';
 import Searchbar from './components/Searchbar';
-import { FavoriteProvider } from './contexts/favoritesContext';
+import FavoriteContext, { FavoriteProvider } from './contexts/favoritesContext';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+//import Favorites from './routes/Favorites';
 
 const favoritesKey = 'f';
 function App() {
@@ -89,21 +91,44 @@ function App() {
       }}
     >
       <div>
-        <Navbar />
-        <Searchbar onSearch={onSearchHandler} />
-        {notFound ? (
-          <div className="items-center p-5 text-lg justify-center">
-            Meteu essa?!
-          </div>
-        ) : (
-          <Pokedex
-            pokemons={pokemons}
-            loading={loading}
-            page={page}
-            setPage={setPage}
-            totalPages={totalPages}
-          />
-        )}
+        <Router>
+          <Switch>
+            <Route exact path="/">
+              <Navbar />
+              <Searchbar onSearch={onSearchHandler} />
+              {notFound ? (
+                <div className="items-center p-5 text-lg justify-center">
+                  Pokemon não encontrado
+                </div>
+              ) : (
+                <Pokedex
+                  pokemons={pokemons}
+                  loading={loading}
+                  page={page}
+                  setPage={setPage}
+                  totalPages={totalPages}
+                />
+              )}
+            </Route>
+            <Route exact path="/Favorites">
+              <Navbar />
+              <Searchbar onSearch={onSearchHandler} />
+              {notFound ? (
+                <div className="items-center p-5 text-lg justify-center">
+                  Pokemon não encontrado
+                </div>
+              ) : (
+                <Pokedex
+                  pokemons={FavoriteContext.favoritePokemons}
+                  loading={loading}
+                  page={page}
+                  setPage={setPage}
+                  totalPages={totalPages}
+                />
+              )}
+            </Route>
+          </Switch>
+        </Router>
       </div>
     </FavoriteProvider>
   );
