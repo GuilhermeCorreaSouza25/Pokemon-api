@@ -4,7 +4,7 @@ import './App.css';
 import Navbar from './components/Navbar';
 import Pokedex from './components/Pokedex';
 import Searchbar from './components/Searchbar';
-import FavoriteContext, { FavoriteProvider } from './contexts/favoritesContext';
+import { FavoriteProvider } from './contexts/favoritesContext';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 //import Favorites from './routes/Favorites';
 
@@ -110,7 +110,7 @@ function App() {
                 />
               )}
             </Route>
-            <Route exact path="/Favorites">
+            {/* <Route exact path="/Favorites">
               <Navbar />
               <Searchbar onSearch={onSearchHandler} />
               {notFound ? (
@@ -126,7 +126,7 @@ function App() {
                   totalPages={totalPages}
                 />
               )}
-            </Route>
+            </Route> */}
           </Switch>
         </Router>
       </div>
