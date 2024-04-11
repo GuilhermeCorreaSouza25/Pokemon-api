@@ -97,7 +97,7 @@ function App() {
               <Navbar />
               <Searchbar onSearch={onSearchHandler} />
               {notFound ? (
-                <div className="items-center p-5 text-lg justify-center">
+                <div className="items-center p-5 text-lg justify-center text-white">
                   Pokemon não encontrado
                 </div>
               ) : (
@@ -109,24 +109,8 @@ function App() {
                   totalPages={totalPages}
                 />
               )}
+              <footer>copryright</footer>
             </Route>
-            {/* <Route exact path="/Favorites">
-              <Navbar />
-              <Searchbar onSearch={onSearchHandler} />
-              {notFound ? (
-                <div className="items-center p-5 text-lg justify-center">
-                  Pokemon não encontrado
-                </div>
-              ) : (
-                <Pokedex
-                  pokemons={FavoriteContext.favoritePokemons}
-                  loading={loading}
-                  page={page}
-                  setPage={setPage}
-                  totalPages={totalPages}
-                />
-              )}
-            </Route> */}
           </Switch>
         </Router>
       </div>
