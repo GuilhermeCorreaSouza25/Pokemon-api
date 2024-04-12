@@ -14,7 +14,7 @@ const Pokemon = (props) => {
 
   return (
     <div className="flex shadow-lg shadow-black rounded-lg bg-gray-900 border-solid p-px w-50 h-20">
-      <div className="flex px-0 py-1.5 rounded-3xl bg-white">
+      <div className="flex px-0 py-1.5 rounded bg-white">
         <img
           alt={pokemon.name}
           src={pokemon.sprites.front_default}
